@@ -1,1 +1,1 @@
-window.window.location.href = "/assets/static/404.html";
+window.window.location.href = "404.html";
