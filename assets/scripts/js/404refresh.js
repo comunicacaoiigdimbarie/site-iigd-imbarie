@@ -1,0 +1,1 @@
+window.window.location.href = "/assets/static/404.html";
