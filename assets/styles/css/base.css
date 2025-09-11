@@ -54,6 +54,8 @@ header nav a {
     justify-content: center; 
     text-align: center;
     width: 100%;
+    text-decoration: none;
+    color: unset;
 }
 
 footer {
