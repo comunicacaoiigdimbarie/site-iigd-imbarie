@@ -1,66 +1,65 @@
-function includeLayout(tagName, file, callback) {
+function includeLayout(tagName, file) {
     const element = document.querySelector(tagName);
-    if (element) {
-        fetch(file)
-            .then(response => {
-                if (!response.ok) throw new Error(`Erro ao carregar ${file}`);
-                return response.text();
-            })
-            .then(data => {
-                element.innerHTML = data;
+    if (!element) return Promise.resolve();
 
-                if (typeof callback === 'function') {
-                    callback();
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
+    return fetch(file)
+        .then(response => {
+            if (!response.ok) throw new Error(`Erro ao carregar ${file}`);
+            return response.text();
+        })
+        .then(data => {
+            element.innerHTML = data;
+        });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    includeLayout("header", "/assets/base/header.html", initDropdowns);
+document.addEventListener("DOMContentLoaded", async () => {
+    await includeLayout("header", "/assets/base/header.html");
 
-    includeLayout("footer", "/assets/base/footer.html");
+    requestAnimationFrame(() => {
+        initDropdowns();
+    });
+
+    await includeLayout("footer", "/assets/base/footer.html");
 });
 
 function initDropdowns() {
     const setupDropdown = (triggerId, dropdownId) => {
-        const trigger = document.getElementById(triggerId);
-        const dropdown = document.getElementById(dropdownId);
-
-        if (!trigger || !dropdown) return;
-
+        const trigger = document.querySelector(`#${triggerId}`);
+        const dropdown = document.querySelector(`#${dropdownId}`);
         const header = document.querySelector('header');
 
-        const positionDropdown = () => {
-            if (!header) return;
+        if (!trigger || !dropdown || !header) return;
 
+        function positionDropdown() {
             const headerRect = header.getBoundingClientRect();
             const triggerRect = trigger.getBoundingClientRect();
 
             const topPosition = headerRect.bottom;
-
             const leftPosition = triggerRect.left;
 
             dropdown.style.position = 'absolute';
             dropdown.style.top = `${topPosition}px`;
             dropdown.style.left = `${leftPosition}px`;
-        };
+        }
 
-        const showDropdown = () => {
+        function showDropdown() {
             positionDropdown();
-            dropdown.style.display = 'block';
+
+            dropdown.style.opacity = '0';
+            dropdown.style.transform = 'translateY(-20px)';
+            dropdown.style.pointerEvents = 'none';
+
+            dropdown.style.display = 'flex';
 
             requestAnimationFrame(() => {
                 dropdown.style.opacity = '1';
                 dropdown.style.transform = 'translateY(0)';
                 dropdown.style.pointerEvents = 'auto';
             });
-        };
+        }
 
-        const hideDropdown = () => {
+
+        function hideDropdown() {
             dropdown.style.opacity = '0';
             dropdown.style.transform = 'translateY(-20px)';
             dropdown.style.pointerEvents = 'none';
@@ -70,20 +69,30 @@ function initDropdowns() {
                     dropdown.style.display = 'none';
                 }
             }, 300);
-        };
+        }
 
-        trigger.addEventListener('mouseenter', showDropdown);
-        trigger.addEventListener('mouseleave', () => {
-            setTimeout(() => {
-                if (!dropdown.matches(':hover')) hideDropdown();
-            }, 100);
-        });
+        document.addEventListener('mouseenter', (e) => {
+            if (e.target === trigger) {
+                showDropdown();
+            }
+            if (e.target === dropdown) {
+                showDropdown();
+            }
+        }, true);
 
-        dropdown.addEventListener('mouseenter', showDropdown);
-        dropdown.addEventListener('mouseleave', hideDropdown);
+        document.addEventListener('mouseleave', (e) => {
+            if (e.target === trigger) {
+                setTimeout(() => {
+                    if (!dropdown.matches(':hover')) hideDropdown();
+                }, 100);
+            }
+            if (e.target === dropdown) {
+                hideDropdown();
+            }
+        }, true);
 
         window.addEventListener('resize', () => {
-            if (dropdown.style.display === 'block') {
+            if (dropdown.style.display === 'flex') {
                 positionDropdown();
             }
         });

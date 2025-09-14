@@ -1,6 +1,6 @@
 :root {
     --background-color: #fffafa;
-    --background-color2: #ffffff;   
+    --background-color2: #ffffff;
     --font: Arial, sans-serif;
 }
 
@@ -61,6 +61,10 @@ header {
     min-height: 95px;
     max-height: 95px;
     gap: 100px;
+}
+
+header nav#s-nav {
+    display: none;
 }
 
 header div {
@@ -153,19 +157,19 @@ header.sticky {
 }
 
 .dropdown a {
-    display: block;           
+    display: block;
     padding: 8px 12px;
     text-decoration: none;
     color: unset;
     font-weight: bold;
     white-space: nowrap;
     text-align: left;
-    line-height: 20px;           
+    line-height: 20px;
 }
 
 .dropdown a ion-icon {
     display: inline-block;
-    vertical-align: middle;          
+    vertical-align: middle;
 }
 
 footer {
@@ -210,6 +214,16 @@ footer div#copyr {
     justify-self: flex-end;
 }
 
+header nav#s-nav ion-icon.s-nav-chevron {
+    transform: rotate(90deg);
+    cursor: pointer;
+    transition: all .5s;
+}
+
+header nav#s-nav ion-icon.on {
+    transform: rotate(630deg);
+}
+
 /* Main */
 main {
     flex: 1;
@@ -224,6 +238,50 @@ main section {
     height: calc(100vh - 95px);
 }
 
+/* Main Menu */
+
+#main-menu {
+    position: fixed;
+    top: 95px;
+    right: 0;
+    overflow: scroll;
+    width: 80%;
+    height: calc(100vh - 95px);
+    background-color: var(--background-color);
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 999;
+    overflow-y: auto;
+    transition: all .5s;
+}
+
+#main-menu {
+    gap: 25px;
+    font-size: large;
+    font-weight: bold;
+    padding-right: 50px;
+    text-align: right;
+}
+
+#main-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-right: 20px;
+    text-align: right;
+    gap: 15px;
+    font-weight: normal;
+}
+
+#main-menu.on {
+    display: flex;
+}
+
+
 
 @media (max-width: 768px) {
     #iconsdiv {
@@ -232,5 +290,31 @@ main section {
         justify-content: center;
         gap: 20px;
         padding: 0 10px;
+    }
+
+    header nav#b-nav {
+        display: none;
+    }
+
+    header nav#s-nav {
+        display: flex;
+    }
+
+    footer {
+        white-space: normal;
+    }
+
+    #footer-content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        white-space: normal;
+    }
+
+    footer div#copyr {
+        align-self: center;
+        justify-self: flex-end;
+        white-space: normal;
+        text-align: center;
     }
 }
