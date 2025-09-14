@@ -1,0 +1,17 @@
+main section div#location-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#location-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+ion-icon {
+    display: inline-block;
+    vertical-align: sub;          
+}

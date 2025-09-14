@@ -1,3 +1,9 @@
+:root {
+    --background-color: #fffafa;
+    --background-color2: #ffffff;   
+    --font: Arial, sans-serif;
+}
+
 /* Reset básico */
 * {
     margin: 0;
@@ -5,18 +11,42 @@
     box-sizing: border-box;
 }
 
+a {
+    cursor: pointer;
+    color: unset;
+    text-decoration: none;
+}
+
+span.underlinespan {
+    display: inline;
+    text-decoration: underline;
+}
+
+span.hrsspan {
+    display: block;
+    justify-self: center;
+    margin: auto;
+    width: 30%;
+    height: 2px;
+    background-color: var(--background-color);
+    border-radius: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
 /* Corpo */
 html,
 body {
     height: 100%;
-    background-color: #fff6e9;
+    background-color: var(--background-color);
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: sans-serif;
+    font-family: var(--font);
 }
 
 /* Header e Footer */
@@ -24,45 +54,160 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    background: #333;
-    color: white;
+    justify-content: center;
+    background: var(--background-color);
+    color: #000000;
     padding: 20px;
-    height: 100px;
+    min-height: 95px;
+    max-height: 95px;
+    gap: 100px;
 }
 
 header div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
 }
 
 header img {
-    height: 100px;
+    height: 40px;
+    width: 100px;
+    object-fit: cover;
+    filter: invert(1) grayscale(1);
 }
 
 header nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 header nav a {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    transition: all .5s;
+}
+
+header nav a:hover {
+    transform: translateY(-2px);
+}
+
+header nav a span {
+    position: relative;
+}
+
+header nav a span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: #000000;
+    border-radius: 25px;
+    transition: all .5s ease;
+    transform: translateX(-50%);
+}
+
+header nav a:hover span::after {
     width: 100%;
+}
+
+header nav a ion-icon {
+    transition: all .5s;
+}
+
+header nav a:hover ion-icon {
+    transform: rotate(540deg);
+}
+
+header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.dropdown {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    display: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    flex-direction: column;
+    background: var(--background-color, white);
+    padding: 10px;
+    min-width: 150px;
+    border-radius: 0 0 10px 10px;
+    transition: all .5s;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.dropdown a {
+    display: block;           
+    padding: 8px 12px;
     text-decoration: none;
     color: unset;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: left;
+    line-height: 20px;           
+}
+
+.dropdown a ion-icon {
+    display: inline-block;
+    vertical-align: middle;          
 }
 
 footer {
+    display: flex;
+    flex-direction: column;
+    background: #222;
+    color: #ffffff;
+    white-space: nowrap;
+    padding: 50px;
+    flex-shrink: 0;
+    gap: 100px;
+}
+
+footer div {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+footer div span {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#footer-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
     text-align: center;
     background: #222;
     color: white;
-    padding: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    gap: 100px;
+    justify-self: flex-start;
+}
+
+footer div#copyr {
+    align-self: center;
+    justify-self: flex-end;
 }
 
 /* Main */
@@ -71,12 +216,21 @@ main {
     padding: 20px;
 }
 
-@media (max-width: 768px) {
-  #iconsdiv {
+main section {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 0 10px;
-  }
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: calc(100vh - 95px);
+}
+
+
+@media (max-width: 768px) {
+    #iconsdiv {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 0 10px;
+    }
 }

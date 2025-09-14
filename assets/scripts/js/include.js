@@ -1,4 +1,4 @@
-function includeLayout(tagName, file) {
+function includeLayout(tagName, file, callback) {
   const element = document.querySelector(tagName);
   if (element) {
     fetch(file)
@@ -8,14 +8,13 @@ function includeLayout(tagName, file) {
       })
       .then(data => {
         element.innerHTML = data;
+
+        if (typeof callback === 'function') {
+          callback();
+        }
       })
       .catch(error => {
         console.error(error);
       });
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  includeLayout("header", "/assets/base/header.html");
-  includeLayout("footer", "/assets/base/footer.html");
-});
