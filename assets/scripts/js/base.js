@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     requestAnimationFrame(() => {
         initDropdowns();
+        initChevronToggle();
     });
 
     await includeLayout("footer", "/assets/base/footer.html");

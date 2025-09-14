@@ -1,42 +1,37 @@
 function initChevronToggle() {
     const trigger = document.querySelector(".s-nav-chevron");
-    const menu = document.querySelector("#main-menu")
+    const menu = document.querySelector("#main-menu");
 
-    if (trigger) {
-        async function menuStatus() {
+    if (trigger && menu) {
+        function menuStatus() {
             trigger.classList.toggle("on");
 
-            if (!menu.classList.contains("on")){
+            if (!menu.classList.contains("on")) {
                 openMenu();
             } else {
                 closeMenu();
             }
         }
 
-        async function openMenu() {
-            menu.classList.toggle("on");
+        function openMenu() {
             menu.style.transform = 'translateX(100%)';
-            setTimeout(() => {
+            menu.style.display = 'flex';
+
+            requestAnimationFrame(() => {
                 menu.style.transform = 'translateX(0%)';
-            }, 100);
+                menu.classList.add("on");
+            });
         }
 
-        async function closeMenu() {
+        function closeMenu() {
             menu.style.transform = 'translateX(100%)';
+
             setTimeout(() => {
-                menu.classList.toggle("on");
+                menu.style.display = 'none';
+                menu.classList.remove("on");
             }, 300);
         }
 
         trigger.addEventListener('click', menuStatus);
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    includeLayout("header", "/assets/base/header.html", () => {
-        initChevronToggle();
-    });
-
-    includeLayout("footer", "/assets/base/footer.html");
-});
-
