@@ -1,7 +1,14 @@
-html, body {
+/* ==========================================================================
+   BASE: PREVENÇÃO DE SCROLL HORIZONTAL
+   ========================================================================== */
+html,
+body {
     overflow-x: hidden;
 }
 
+/* ==========================================================================
+   MAIN - ESTRUTURA GERAL
+   ========================================================================== */
 main {
     display: flex;
     flex-direction: column;
@@ -10,6 +17,9 @@ main {
     gap: 50px;
 }
 
+/* ==========================================================================
+   MONKEY DIV (IMAGEM CENTRAL)
+   ========================================================================== */
 main #monkeydiv {
     display: flex;
     flex-direction: column;
@@ -21,14 +31,21 @@ main #monkeydiv img {
     margin-bottom: 20px;
 }
 
+/* ==========================================================================
+   ÍCONES DE LINKS
+   ========================================================================== */
 main #iconsdiv a ion-icon {
     color: #000000;
 }
 
+/* Tamanho padrão de ícones */
 ion-icon {
     font-size: 25px;
 }
 
+/* ==========================================================================
+   TOOLTIP - COMPORTAMENTO E ESTILO
+   ========================================================================== */
 .tooltip-link {
     position: relative;
     text-decoration: none;
@@ -39,12 +56,10 @@ ion-icon {
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%);
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s;
     display: flex;
     align-items: center;
     gap: 6px;
+
     padding: 6px 10px;
     border-radius: 5px;
     white-space: nowrap;
@@ -52,10 +67,14 @@ ion-icon {
 
     background: rgba(51, 51, 51, 0.15);
     backdrop-filter: blur(10px) saturate(180%);
-    
     color: #000000;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
+/* Tooltip visível apenas com mouse (não em telas touch) */
 @media (hover: hover) and (pointer: fine) {
     .tooltip-link:hover .tooltip {
         visibility: visible;
@@ -63,14 +82,20 @@ ion-icon {
     }
 }
 
+/* ==========================================================================
+   BOTÃO DE CÓPIA (COPY BUTTON)
+   ========================================================================== */
 .copy-btn {
     background: none;
     border: none;
     color: #ffffff;
-    cursor: pointer;
     font-size: 16px;
+    cursor: pointer;
 }
 
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
 @media (max-width: 768px) {
     .tooltip {
         display: none !important;

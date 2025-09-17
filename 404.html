@@ -3,8 +3,14 @@
 
 <head>
   <meta charset="UTF-8">
+
+  <!-- Título da página 404 -->
   <title>Page Not Found - IIGD Imbariê</title>
+
+  <!-- Favicon -->
   <link rel="shortcut icon" href="/assets/images/iigdlogo.ico" type="image/x-icon">
+
+  <!-- Stylesheets base e específica da página 404 -->
   <link rel="stylesheet" href="/assets/styles/css/base.css">
   <link rel="stylesheet" href="/assets/styles/css/404.css">
 </head>
@@ -12,18 +18,31 @@
 <body>
 
   <main>
+    <!-- Container com imagem e mensagens de erro -->
     <div id="monkeydiv">
       <img src="https://www.gstatic.com/youtube/src/web/htdocs/img/monkey.png" alt="">
       <p>Página indisponível. Lamentamos o transtorno.</p>
       <p>Tente entrar em contato conosco.</p>
     </div>
+
+    <!-- Container com ícones de redes sociais e contato -->
     <div id="iconsdiv">
-      <a href="https://go.iigdimbarie.com.br/instagram" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
-      <a href="https://wa.me/5521980402959?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20404!" target="_blank"><ion-icon
-          name="logo-whatsapp"></ion-icon></a>
+      <!-- Link para Instagram abrindo em nova aba -->
+      <a href="https://go.iigdimbarie.com.br/instagram" target="_blank">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </a>
+
+      <!-- Link para WhatsApp com mensagem pré-definida, abre em nova aba -->
+      <a href="https://wa.me/5521980402959?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20404!" target="_blank">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </a>
+
+      <!-- Link de email com tooltip contendo endereço e botão para copiar -->
       <a href="mailto:comunicacao@iigdimbarie.com.br?subject=Página 404&body=Olá,%20vim%20pela%20página%20404!"
         target="_blank" class="tooltip-link">
         <ion-icon name="mail-open-outline"></ion-icon>
+
+        <!-- Tooltip exibindo email e botão de cópia -->
         <div class="tooltip">
           <span class="email-text">comunicacao@iigdimbarie.com.br</span>
           <button class="copy-btn" onclick="copyEmail(event)">
@@ -35,6 +54,8 @@
   </main>
 
 </body>
+
+<!-- Scripts JS -->
 <script src="/assets/scripts/js/ionicons.js"></script>
 <script src="/assets/scripts/js/404page.js"></script>
 

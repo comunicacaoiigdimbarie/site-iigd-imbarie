@@ -1,10 +1,21 @@
+/* ==========================================================================
+   VARIÁVEIS GLOBAIS
+   ========================================================================== */
 :root {
-    --background-color: #fffafa;
-    --background-color2: #ffffff;
-    --font: Arial, sans-serif;
+    --background-primary: #fffafa;
+    --background-secondary: #ffffff;
+    --font-family: Arial, sans-serif;
+    --text-color: #000000;
+    --mtext-color: #808080;
+    --footer-bg: #222;
+    --button-bg-hover: #000000;
+    --button-text-hover: #ffffff;
+    --box-shadow: 0 4px 8px #0000001a;
 }
 
-/* Reset básico */
+/* ==========================================================================
+   RESET BÁSICO
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -13,10 +24,13 @@
 
 a {
     cursor: pointer;
-    color: unset;
+    color: inherit;
     text-decoration: none;
 }
 
+/* ==========================================================================
+   ELEMENTOS UTILITÁRIOS
+   ========================================================================== */
 span.underlinespan {
     display: inline;
     text-decoration: underline;
@@ -24,47 +38,56 @@ span.underlinespan {
 
 span.hrsspan {
     display: block;
-    justify-self: center;
-    margin: auto;
     width: 30%;
     height: 2px;
-    background-color: var(--background-color);
+    margin: 5px auto;
+    background-color: var(--background-primary);
     border-radius: 50px;
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
+span.mtext {
+    color: var(--mtext-color);
+    font-size: smaller;
+}
 
-/* Corpo */
+/* ==========================================================================
+   LAYOUT GERAL
+   ========================================================================== */
 html,
 body {
     height: 100%;
-    background-color: var(--background-color);
+    background-color: var(--background-primary);
+    font-family: var(--font-family);
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: var(--font);
 }
 
-/* Header e Footer */
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
 header {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background: var(--background-color);
-    color: #000000;
+    flex-direction: row;
+    background-color: var(--background-primary);
+    color: var(--text-color);
     padding: 20px;
     min-height: 95px;
     max-height: 95px;
     gap: 100px;
 }
 
-header nav#s-nav {
-    display: none;
+header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 header div {
@@ -80,6 +103,9 @@ header img {
     filter: invert(1) grayscale(1);
 }
 
+/* ==========================================================================
+   HEADER - NAVEGAÇÃO
+   ========================================================================== */
 header nav {
     display: flex;
     align-items: center;
@@ -87,25 +113,22 @@ header nav {
     gap: 20px;
 }
 
+header nav#s-nav {
+    display: none;
+}
+
 header nav a {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    white-space: nowrap;
     font-weight: bold;
-    transition: all .5s;
+    white-space: nowrap;
+    transition: all 0.5s;
+    text-align: center;
 }
 
-header nav a:hover {
-    transform: translateY(-2px);
-}
-
-header nav a span {
-    position: relative;
-}
-
+/* Efeito de sublinhado */
 header nav a span::after {
     content: "";
     position: absolute;
@@ -113,32 +136,30 @@ header nav a span::after {
     bottom: -3px;
     width: 0%;
     height: 2px;
-    background: #000000;
+    background: var(--text-color);
     border-radius: 25px;
-    transition: all .5s ease;
     transform: translateX(-50%);
+    transition: all 0.5s ease;
 }
 
-header nav a:hover span::after {
-    width: 100%;
-}
-
+/* Ícones */
 header nav a ion-icon {
-    transition: all .5s;
+    transition: transform 0.5s;
 }
 
-header nav a:hover ion-icon {
-    transform: rotate(540deg);
+header nav#s-nav ion-icon.s-nav-chevron {
+    transform: rotate(90deg);
+    cursor: pointer;
+    transition: all 0.5s;
 }
 
-header.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+header nav#s-nav ion-icon.on {
+    transform: rotate(630deg);
 }
 
+/* ==========================================================================
+   HEADER - DROPDOWN
+   ========================================================================== */
 .dropdown {
     position: absolute;
     top: 40px;
@@ -147,52 +168,36 @@ header.sticky {
     opacity: 0;
     transform: translateY(-20px);
     flex-direction: column;
-    background: var(--background-color, white);
+    background: var(--background-primary);
     padding: 10px;
     min-width: 150px;
     border-radius: 0 0 10px 10px;
-    transition: all .5s;
     pointer-events: none;
-    z-index: 1000;
+    transition: all 0.5s;
+    z-index: 1001;
 }
 
 .dropdown a {
     display: block;
     padding: 8px 12px;
-    text-decoration: none;
-    color: unset;
     font-weight: bold;
-    white-space: nowrap;
     text-align: left;
     line-height: 20px;
+    color: inherit;
 }
 
-.dropdown a ion-icon {
-    display: inline-block;
-    vertical-align: middle;
-}
-
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 footer {
     display: flex;
     flex-direction: column;
-    background: #222;
-    color: #ffffff;
-    white-space: nowrap;
+    background: var(--footer-bg);
+    color: white;
     padding: 50px;
-    flex-shrink: 0;
     gap: 100px;
-}
-
-footer div {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-footer div span {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 #footer-content {
@@ -200,33 +205,39 @@ footer div span {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    text-align: center;
-    background: #222;
-    color: white;
-    white-space: nowrap;
-    flex-shrink: 0;
     gap: 100px;
-    justify-self: flex-start;
+    white-space: nowrap;
+    background: var(--footer-bg);
+}
+
+#footer-content div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 25px;
+}
+
+footer div span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
 footer div#copyr {
     align-self: center;
-    justify-self: flex-end;
+    text-align: center;
 }
 
-header nav#s-nav ion-icon.s-nav-chevron {
-    transform: rotate(90deg);
-    cursor: pointer;
-    transition: all .5s;
-}
-
-header nav#s-nav ion-icon.on {
-    transform: rotate(630deg);
-}
-
-/* Main */
+/* ==========================================================================
+   MAIN
+   ========================================================================== */
 main {
-    flex: 1;
+    flex: 1 1 auto;
     padding: 20px;
 }
 
@@ -235,44 +246,37 @@ main section {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    height: calc(100vh - 95px);
+    min-height: calc(100vh - 95px);
 }
 
-/* Main Menu */
-
+/* ==========================================================================
+   MENU LATERAL (Mobile)
+   ========================================================================== */
 #main-menu {
     position: fixed;
     top: 95px;
     right: 0;
-    overflow: scroll;
     width: 80%;
     height: calc(100vh - 95px);
-    background-color: var(--background-color);
-    padding: 20px;
+    background-color: var(--background-primary);
+    padding: 20px 50px 20px 20px;
     display: none;
     flex-direction: column;
     align-items: flex-end;
-    z-index: 999;
-    overflow-y: auto;
-    transition: all .5s;
-}
-
-#main-menu {
     gap: 25px;
     font-size: large;
     font-weight: bold;
-    padding-right: 50px;
     text-align: right;
+    overflow-y: auto;
+    z-index: 999;
+    transition: all 0.5s;
 }
 
 #main-menu ul {
     display: flex;
     flex-direction: column;
     list-style: none;
-    padding: 0;
-    margin: 0;
-    margin-right: 20px;
-    text-align: right;
+    margin: 0 20px 0 0;
     gap: 15px;
     font-weight: normal;
 }
@@ -281,6 +285,176 @@ main section {
     display: flex;
 }
 
+/* ==========================================================================
+   GRADE DE MINISTÉRIOS
+   ========================================================================== */
+.ministerios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ministerio-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: var(--background-secondary);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.ministerio-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.ministerio-card h3 {
+    font-size: 1.25rem;
+}
+
+.ministerio-card p {
+    color: #444;
+}
+
+.ministerio-card a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.ministerio-card a button {
+    background-color: transparent;
+    color: var(--text-color);
+    width: 50%;
+    padding: 10px 20px;
+    border: 2px solid var(--text-color);
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+/* ==========================================================================
+   GRADE DE REDES SOCIAIS
+   ========================================================================== */
+.redessociais-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.redessociais-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background: var(--background-secondary);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.redessociais-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.redessociais-card h3 {
+    font-size: 1.25rem;
+}
+
+.redessociais-card p {
+    color: #444;
+}
+
+.redessociais-card a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.redessociais-card a button {
+    background-color: transparent;
+    color: var(--text-color);
+    width: 50%;
+    padding: 10px 20px;
+    border: 2px solid var(--text-color);
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+    header nav a:hover {
+        transform: translateY(-2px);
+    }
+
+    header nav a:hover ion-icon {
+        transform: rotate(540deg);
+    }
+
+    header nav a:hover span::after {
+        width: 100%;
+    }
+
+    .ministerios-grid:hover:has(.ministerio-card:hover) .ministerio-card {
+        transform: scale(0.9);
+        filter: grayscale(1) blur(2px);
+    }
+
+    .ministerio-card:hover {
+        transform: translateY(-5px) scale(1.05) !important;
+        filter: grayscale(0) blur(0px) !important;
+    }
+
+    .ministerio-card a button:hover {
+        background-color: var(--button-bg-hover);
+        color: var(--button-text-hover);
+        width: 100%;
+    }
+
+    .redessociais-grid:hover:has(.redessociais-card:hover) .redessociais-card {
+        transform: scale(0.9);
+        filter: grayscale(1) blur(2px);
+    }
+
+    .redessociais-card:hover {
+        transform: translateY(-5px) scale(1.05) !important;
+        filter: grayscale(0) blur(0px) !important;
+    }
+
+    .redessociais-card a button:hover {
+        background-color: var(--button-bg-hover);
+        color: var(--button-text-hover);
+        width: 100%;
+    }
+}
 
 
 @media (max-width: 768px) {
@@ -306,15 +480,66 @@ main section {
 
     #footer-content {
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         white-space: normal;
     }
 
     footer div#copyr {
-        align-self: center;
-        justify-self: flex-end;
         white-space: normal;
         text-align: center;
+    }
+
+    .ministerios-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+        gap: 20px;
+    }
+
+    .ministerio-card {
+        padding: 15px;
+    }
+
+    .ministerio-card img {
+        height: 160px;
+    }
+
+    .ministerio-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .ministerio-card p {
+        font-size: 0.95rem;
+    }
+
+    .ministerio-card button {
+        font-size: 0.95rem;
+        padding: 8px 16px;
+    }
+
+    .redessociais-grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+        gap: 20px;
+    }
+
+    .redessociais-card {
+        padding: 15px;
+    }
+
+    .redessociais-card img {
+        height: 160px;
+    }
+
+    .redessociais-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .redessociais-card p {
+        font-size: 0.95rem;
+    }
+
+    .redessociais-card button {
+        font-size: 0.95rem;
+        padding: 8px 16px;
     }
 }

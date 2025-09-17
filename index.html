@@ -4,9 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
     <link rel="shortcut icon" href="/assets/images/iigdlogo.ico" type="image/x-icon">
+
+    <!-- Stylesheet principal -->
     <link rel="stylesheet" href="/assets/styles/css/base.css">
-    <title>Home - IIGD Imbariê</title>
+
+    <title>Início - IIGD Imbariê</title>
+
+    <!-- Estilo interno para cor de fundo do body -->
     <style>
         body {
             background-color: black;
@@ -15,20 +22,25 @@
 </head>
 
 <body>
+    <!-- Header será carregado via JS -->
     <header></header>
+
+    <!-- Menu principal fixo -->
     <div class="menu" id="main-menu">
-        <a href="https://iigdimbarie.com.br">
+        <a href="/">
             <span>Início</span>
         </a>
-        <a href="">
+        <a href="/quemsomos">
             <span>Quem Somos</span>
         </a>
-        <a href="">
+        <!-- <a href="">
             <span>Testemunhos</span>
-        </a>
+        </a> -->
         <a href="/localizacao">
             <span>Localização</span>
         </a>
+
+        <!-- Menu com dropdown Ministérios -->
         <a href="/ministerios" class="has-dropdown-inmenu" id="dropdown-inmenu-ministerios-trigger">
             <span>Ministérios</span>
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -59,9 +71,13 @@
                 </li>
             </ul>
         </a>
+
+        <!-- Link externo abrindo nova aba -->
         <a href="https://go.iigdimbarie.com.br" target="_blank">
             <span>Central de Links</span>
         </a>
+
+        <!-- Menu com dropdown Redes Sociais -->
         <a class="has-dropdown-inmenu" id="dropdown-inmenu-redes-trigger">
             <span>Redes Sociais</span>
             <ion-icon name="chevron-down-outline"></ion-icon>
@@ -77,12 +93,15 @@
     </div>
 
     <main>
-        
+        <!-- Conteúdo principal vazio -->
     </main>
 
+    <!-- Footer será carregado via JS -->
     <footer></footer>
 </body>
-<script src="/assets/scripts/js/404refresh.js"></script>
+
+<!-- Scripts JS -->
+<!-- <script src="/assets/scripts/js/404refresh.js"></script> -->
 <script src="/assets/scripts/js/include.js"></script>
 <script src="/assets/scripts/js/ionicons.js"></script>
 <script src="/assets/scripts/js/base.js"></script>
