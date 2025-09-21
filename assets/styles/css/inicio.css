@@ -1,0 +1,72 @@
+/* ==========================================================================
+   INÍCIO - RESET BÁSICO
+   ========================================================================== */
+main {
+   padding: 0px 0px 0px 0px;
+}
+
+section {
+   padding: 20px;
+}
+
+/* ==========================================================================
+   INÍCIO - SECTION I ( VENHA NOS VISITAR )
+   ========================================================================== */
+#venhanosvisitar-section {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   background: url("/assets/images/ministerios/FIIGD.png") center #000000;
+   background-size: cover;
+   padding: 20px;
+}
+
+#venhanosvisitar-content {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   color: #ffffff;
+   gap: 50px;
+}
+
+#venhanosvisitar-content-header {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 15px;
+}
+
+#venhanosvisitar-content-main {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+}
+
+#venhanosvisitar-content-main-icons {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+   font-size: 25px;
+}
+
+#venhanosvisitar-content-main-icons ion-icon {
+   transition: all .5s;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+   #venhanosvisitar-content-main-icons ion-icon:hover {
+      transform: scale(1.5);
+   }
+}

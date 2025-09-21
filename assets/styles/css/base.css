@@ -4,13 +4,14 @@
 :root {
     --background-primary: #fffafa;
     --background-secondary: #ffffff;
+    --backgroundontrast: #bebebe;
     --font-family: Arial, sans-serif;
     --text-color: #000000;
     --mtext-color: #808080;
     --footer-bg: #222;
     --button-bg-hover: #000000;
     --button-text-hover: #ffffff;
-    --box-shadow: 0 4px 8px #0000001a;
+    --box-shadow: 0 0px 10px #00000060;
 }
 
 /* ==========================================================================
@@ -47,7 +48,51 @@ span.hrsspan {
 
 span.mtext {
     color: var(--mtext-color);
-    font-size: smaller;
+    font-size: 13px;
+}
+
+span.metext {
+    font-size: 16px;
+}
+
+span.fullstrong {
+    font-weight: bolder;
+}
+
+span.godown {
+    color: var(--background-primary);
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+}
+
+span.goup {
+    color: var(--background-primary);
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+}
+
+span.goright {
+    color: var(--background-primary);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 50px;
+    font-size: 25px;
+}
+
+span.goleft {
+    color: var(--background-primary);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50px;
+    font-size: 25px;
 }
 
 /* ==========================================================================
@@ -247,6 +292,50 @@ main section {
     align-items: center;
     justify-content: flex-start;
     min-height: calc(100vh - 95px);
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   QUEM SOMOS INÍCIO - SECTION
+   ========================================================================== */
+#quemsomos-section-inicio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#quemsomos-section-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 100px;
+}
+
+#quemsomos-section-text {
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+}
+
+#quemsomos-section-text h3 {
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+
+#quemsomos-section-text h1 {
+    margin-bottom: 25px;
+    font-size: 50px;
+}
+
+#quemsomos-section-embeds img {
+    width: 600px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
 }
 
 /* ==========================================================================
@@ -286,8 +375,15 @@ main section {
 }
 
 /* ==========================================================================
-   GRADE DE MINISTÉRIOS
+   GRADE DE MINISTÉRIOS & SECTION DE MINISTÉRIOS
    ========================================================================== */
+#ministerios-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .ministerios-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -346,9 +442,21 @@ main section {
     transition: all 0.5s;
 }
 
+#ministerios-section-inicio-text {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 /* ==========================================================================
-   GRADE DE REDES SOCIAIS
+   GRADE DE REDES SOCIAIS & SECTION DE REDES SOCIAIS
    ========================================================================== */
+#redessociais-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .redessociais-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -489,15 +597,40 @@ main section {
         text-align: center;
     }
 
+    #quemsomos-section-inicio {
+        flex-direction: column;
+    }
+
+    #quemsomos-section-content {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    #quemsomos-section-text h1 {
+        font-size: 30px;
+    }
+
+    #quemsomos-section-embeds img {
+        width: 100%;
+    }
+
     .ministerios-grid {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(2, auto);
+        grid-auto-columns: 277px;
         gap: 20px;
+        padding: 10px;
+        overflow-x: auto;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .ministerio-card {
         padding: 15px;
     }
+
 
     .ministerio-card img {
         height: 160px;
@@ -516,10 +649,20 @@ main section {
         padding: 8px 16px;
     }
 
+    #ministerios-section-inicio-text {
+        margin: 0;
+    }
+
     .redessociais-grid {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(2, auto);
+        grid-auto-columns: 277px;
         gap: 20px;
+        padding: 10px;
+        overflow-x: auto;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .redessociais-card {
@@ -541,5 +684,9 @@ main section {
     .redessociais-card button {
         font-size: 0.95rem;
         padding: 8px 16px;
+    }
+
+    span.mtext {
+        font-size: 10px;
     }
 }
