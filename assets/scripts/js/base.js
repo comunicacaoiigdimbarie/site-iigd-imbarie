@@ -22,6 +22,41 @@ function includeLayout(tagName, file) {
 }
 
 /* ==========================================================================
+   FUNÇÃO: DARK / LIGHT THEME
+   ========================================================================== */
+function initThemeToggle() {
+    const toggle = document.querySelector("#theme-toggle");
+    const html = document.documentElement;
+
+    if (!toggle) return;
+
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+        html.setAttribute("data-theme", "dark");
+        toggle.innerHTML = '<ion-icon name="sunny"></ion-icon>';
+    } else {
+        html.removeAttribute("data-theme");
+        toggle.innerHTML = '<ion-icon name="moon"></ion-icon>';
+    }
+
+    toggle.addEventListener("click", () => {
+        const isDark = html.getAttribute("data-theme") === "dark";
+
+        if (isDark) {
+            html.removeAttribute("data-theme");
+            localStorage.setItem("theme", "light");
+            toggle.innerHTML = '<ion-icon name="moon"></ion-icon>';
+        } else {
+            html.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+            toggle.innerHTML = '<ion-icon name="sunny"></ion-icon>';
+        }
+    });
+}
+
+/* ==========================================================================
    EVENTO: DOCUMENTO PRONTO
    ========================================================================== */
 document.addEventListener("DOMContentLoaded", async () => {
@@ -36,6 +71,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Inclui o footer
     await includeLayout("footer", "/assets/base/footer.html");
+
+    // Coloca o ano no copyright
+    document.querySelector("#copyr").innerHTML = `<p>&copy; ${new Date().getFullYear()} Igreja Internacional da Graça de Deus. Todos os direitos reservados.</p>`;
+
+    // Chama o dark-light theme toggle
+    initThemeToggle();
 });
 
 /* ==========================================================================
@@ -125,15 +166,4 @@ function initDropdowns() {
     // Inicializa os dropdowns específicos
     setupDropdown('dropdown-ministerios-trigger', 'dropdown-ministerios-menu');
     setupDropdown('dropdown-redes-trigger', 'dropdown-redes-menu');
-}
-
-/* ==========================================================================
-   FUNÇÃO: TOGGLE DE ÍCONES (CHEVRONS)
-   ========================================================================== */
-/**
- * Inicializa lógica de troca de ícones (ex: chevron para abrir/fechar menus).
- * Implementar lógica personalizada conforme necessidade.
- */
-function initChevronToggle() {
-    // Lógica a ser implementada conforme a necessidade do projeto
 }

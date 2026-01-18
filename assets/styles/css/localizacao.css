@@ -10,6 +10,7 @@ main section div#location-section-content {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
+    color: var(--text-color);
 }
 
 /* ==========================================================================

@@ -1,6 +1,10 @@
 /* ==========================================================================
    MINISTÉRIO - CONTEÚDO PRINCIPAL
    ========================================================================== */
+main section#ministerios-section {
+    background-color: var(--background-primary);
+}
+
 main section div#ministerio-section-content {
     flex: 1;
     display: flex;
@@ -10,6 +14,30 @@ main section div#ministerio-section-content {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
+}
+
+.ministerio-card {
+    background: var(--background-primary-contrast);
+}
+
+.ministerio-card h3 {
+    color: var(--text-color-contrast);
+}
+
+.ministerio-card p {
+    color: var(--text-color-contrast);
+}
+
+.ministerio-card a button {
+    background-color: transparent;
+    color: var(--text-color-contrast);
+    width: 50%;
+    padding: 10px 20px;
+    border: 2px solid var(--text-color-contrast);
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all var(--transition-time);
 }
 
 main section div#ministerio-content-embeds img {

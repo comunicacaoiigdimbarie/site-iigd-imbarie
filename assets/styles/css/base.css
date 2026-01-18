@@ -3,15 +3,48 @@
    ========================================================================== */
 :root {
     --background-primary: #fffafa;
+    --background-primary-contrast: #101010;
     --background-secondary: #ffffff;
     --backgroundontrast: #bebebe;
+
     --font-family: Arial, sans-serif;
+
+    --transition-time: .5s;
+
     --text-color: #000000;
+    --text-color-contrast: #ffffff;
     --mtext-color: #808080;
-    --footer-bg: #222;
+
+    --footer-bg: #f0f0f0;
+
     --button-bg-hover: #000000;
     --button-text-hover: #ffffff;
+
     --box-shadow: 0 0px 10px #00000060;
+
+    --header-image-filter: invert(1) grayscale(1);
+}
+
+/* ==========================================================================
+   TEMA ESCURO
+   ========================================================================== */
+[data-theme="dark"] {
+    --background-primary: #121212;
+    --background-primary-contrast: #ffffff;
+    --background-secondary: #1e1e1e;
+    --backgroundontrast: #2a2a2a;
+
+    --text-color: #ffffff;
+    --text-color-contrast: #000000;
+
+    --footer-bg: #000000;
+
+    --button-bg-hover: #ffffff;
+    --button-text-hover: #000000;
+
+    --box-shadow: 0 0px 10px #000000cc;
+
+    --header-image-filter: "";
 }
 
 /* ==========================================================================
@@ -42,7 +75,7 @@ span.hrsspan {
     width: 30%;
     height: 2px;
     margin: 5px auto;
-    background-color: var(--background-primary);
+    background-color: var(--background-primary-contrast);
     border-radius: 50px;
 }
 
@@ -60,7 +93,7 @@ span.fullstrong {
 }
 
 span.godown {
-    color: var(--background-primary);
+    color: #ffffff;
     position: absolute;
     bottom: 50px;
     left: 50%;
@@ -145,7 +178,18 @@ header img {
     height: 40px;
     width: 100px;
     object-fit: cover;
-    filter: invert(1) grayscale(1);
+    filter: var(--header-image-filter);
+}
+
+header button#theme-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: unset;
+    border: unset;
+    color: var(--text-color);
+    font-size: 20px;
+    transition: all var(--transition-time);
 }
 
 /* ==========================================================================
@@ -169,7 +213,7 @@ header nav a {
     justify-content: center;
     font-weight: bold;
     white-space: nowrap;
-    transition: all 0.5s;
+    transition: all var(--transition-time);
     text-align: center;
 }
 
@@ -184,18 +228,18 @@ header nav a span::after {
     background: var(--text-color);
     border-radius: 25px;
     transform: translateX(-50%);
-    transition: all 0.5s ease;
+    transition: all var(--transition-time) ease;
 }
 
 /* Ícones */
 header nav a ion-icon {
-    transition: transform 0.5s;
+    transition: transform var(--transition-time);
 }
 
 header nav#s-nav ion-icon.s-nav-chevron {
     transform: rotate(90deg);
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all var(--transition-time);
 }
 
 header nav#s-nav ion-icon.on {
@@ -218,7 +262,7 @@ header nav#s-nav ion-icon.on {
     min-width: 150px;
     border-radius: 0 0 10px 10px;
     pointer-events: none;
-    transition: all 0.5s;
+    transition: all var(--transition-time);
     z-index: 1001;
 }
 
@@ -238,7 +282,7 @@ footer {
     display: flex;
     flex-direction: column;
     background: var(--footer-bg);
-    color: white;
+    color: var(--text-color);
     padding: 50px;
     gap: 100px;
     flex-shrink: 0;
@@ -303,7 +347,9 @@ main section {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    background-color: var(--background-primary);
     padding: 20px;
+    color: var(--text-color);
 }
 
 #quemsomos-section-content {
@@ -358,7 +404,7 @@ main section {
     text-align: right;
     overflow-y: auto;
     z-index: 999;
-    transition: all 0.5s;
+    transition: all var(--transition-time);
 }
 
 #main-menu ul {
@@ -382,6 +428,7 @@ main section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: var(--background-primary-contrast);
 }
 
 .ministerios-grid {
@@ -397,7 +444,7 @@ main section {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    background: var(--background-secondary);
+    background: var(--background-primary);
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     overflow: hidden;
@@ -415,11 +462,13 @@ main section {
 }
 
 .ministerio-card h3 {
+    color: var(--text-color);
     font-size: 1.25rem;
 }
 
 .ministerio-card p {
-    color: #444;
+    /* color: #444; */
+    color: var(--text-color);
 }
 
 .ministerio-card a {
@@ -439,10 +488,11 @@ main section {
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all var(--transition-time);
 }
 
 #ministerios-section-inicio-text {
+    color: var(--text-color-contrast);
     margin-bottom: 20px;
     text-align: center;
 }
@@ -492,7 +542,8 @@ main section {
 }
 
 .redessociais-card p {
-    color: #444;
+    /* color: #444; */
+    color: var(--mtext-color);
 }
 
 .redessociais-card a {
@@ -512,7 +563,7 @@ main section {
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all var(--transition-time);
 }
 
 /* ==========================================================================

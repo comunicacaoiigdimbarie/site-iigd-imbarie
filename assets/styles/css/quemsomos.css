@@ -10,6 +10,7 @@ main section div#quemsomos-section-content {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
+    color: var(--text-color);
 }
 
 main section div#quemsomos-content-embeds img {

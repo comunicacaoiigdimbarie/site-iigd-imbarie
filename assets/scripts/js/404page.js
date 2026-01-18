@@ -12,9 +12,16 @@ function copyEmail(event) {
     // Tenta copiar o texto para a área de transferência
     navigator.clipboard.writeText(email)
         .then(() => {
-            alert('E-mail copiado para a área de transferência!');
+            document.querySelector("#emailionicon").setAttribute("name", "checkmark-outline");
+            setInterval(async () => {
+                document.querySelector("#emailionicon").setAttribute("name", "copy-outline");
+            }, 2 * 1000)
         })
         .catch(err => {
-            alert('Erro ao copiar o e-mail: ' + err);
+            document.querySelector("#emailionicon").setAttribute("name", "close-outline");
+            console.log("Erro no copiar email na página 404: ", err)
+            setInterval(async () => {
+                document.querySelector("#emailionicon").setAttribute("name", "copy-outline");
+            }, 2 * 1000);
         });
 }
