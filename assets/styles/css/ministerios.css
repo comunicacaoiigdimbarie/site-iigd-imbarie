@@ -14,6 +14,8 @@ main section div#ministerio-section-content {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
+    
+    color: var(--text-color);
 }
 
 .ministerio-card {

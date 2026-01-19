@@ -103,7 +103,7 @@ function initDropdowns() {
             const triggerRect = trigger.getBoundingClientRect();
 
             dropdown.style.position = 'absolute';
-            dropdown.style.top = `${headerRect.bottom}px`;
+            dropdown.style.top = `${headerRect.bottom - 35}px`;
             dropdown.style.left = `${triggerRect.left}px`;
         }
 

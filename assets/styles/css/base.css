@@ -189,6 +189,7 @@ header button#theme-toggle {
     border: unset;
     color: var(--text-color);
     font-size: 20px;
+    cursor: pointer;
     transition: all var(--transition-time);
 }
 
@@ -200,6 +201,7 @@ header nav {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    z-index: 5;
 }
 
 header nav#s-nav {
@@ -259,11 +261,12 @@ header nav#s-nav ion-icon.on {
     flex-direction: column;
     background: var(--background-primary);
     padding: 10px;
+    padding-top: 35px;
     min-width: 150px;
     border-radius: 0 0 10px 10px;
     pointer-events: none;
     transition: all var(--transition-time);
-    z-index: 1001;
+    z-index: 1;
 }
 
 .dropdown a {
@@ -394,6 +397,7 @@ main section {
     width: 80%;
     height: calc(100vh - 95px);
     background-color: var(--background-primary);
+    color: var(--text-color);
     padding: 20px 50px 20px 20px;
     display: none;
     flex-direction: column;
@@ -682,7 +686,6 @@ main section {
         padding: 15px;
     }
 
-
     .ministerio-card img {
         height: 160px;
     }
@@ -696,7 +699,7 @@ main section {
     }
 
     .ministerio-card button {
-        font-size: 0.95rem;
+        font-size: 0.70rem;
         padding: 8px 16px;
     }
 
