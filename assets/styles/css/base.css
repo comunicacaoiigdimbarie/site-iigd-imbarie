@@ -385,6 +385,7 @@ main section {
     object-fit: cover;
     border-radius: 5px;
     box-shadow: var(--box-shadow);
+    filter: brightness(2);
 }
 
 /* ==========================================================================
@@ -658,6 +659,7 @@ main section {
 
     #quemsomos-section-content {
         flex-direction: column;
+        align-items: center;
         gap: 25px;
         text-align: center;
     }
@@ -668,6 +670,13 @@ main section {
 
     #quemsomos-section-embeds img {
         width: 100%;
+    }
+
+    #ministerio-section-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        text-align: center;
     }
 
     .ministerios-grid {

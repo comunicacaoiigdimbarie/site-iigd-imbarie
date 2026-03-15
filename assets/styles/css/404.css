@@ -3,7 +3,7 @@
    ========================================================================== */
 html,
 body {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /* ==========================================================================
@@ -15,6 +15,18 @@ main {
     align-items: center;
     justify-content: center;
     gap: 50px;
+    z-index: 0;
+    color: #FFFFFF;
+}
+
+main::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   background: url(../../images/FIIGDI.png) center/cover no-repeat;
+   filter: blur(6px) brightness(0.4);
+   transform: scale(1.1);
+   z-index: -1;
 }
 
 /* ==========================================================================
@@ -35,7 +47,7 @@ main #monkeydiv img {
    ÍCONES DE LINKS
    ========================================================================== */
 main #iconsdiv a ion-icon {
-    color: #000000;
+    color: #FFFFFF;
 }
 
 /* Tamanho padrão de ícones */
@@ -67,7 +79,7 @@ ion-icon {
 
     background: rgba(51, 51, 51, 0.15);
     backdrop-filter: blur(10px) saturate(180%);
-    color: #000000;
+    color: #FFFFFF;
 
     visibility: hidden;
     opacity: 0;

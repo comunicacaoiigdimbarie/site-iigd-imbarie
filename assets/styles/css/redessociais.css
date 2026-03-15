@@ -3,6 +3,7 @@
    ========================================================================== */
 main section#redessociais-section {
     background-color: var(--background-primary);
+    padding: 15px;
 }
 
 main section div#redessociais-section-content {
